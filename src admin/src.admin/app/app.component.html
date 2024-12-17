@@ -1,0 +1,27 @@
+<ion-menu contentId="main-content" *ngIf="!isComienzoPage && !isCrearUsuarioPage">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+     
+      <ng-container *ngFor="let item of menu">
+        <ion-item *ngIf="item.name !== 'Cerrar sesión'" [routerLink]="item.redirecTo">
+          <ion-icon [name]="item.icon" slot="start"></ion-icon>
+          {{ item.name }}
+        </ion-item>
+      </ng-container>
+
+     
+      <ion-item *ngIf="hasLogout" (click)="logout()">
+        <ion-icon name="power-outline" slot="start"></ion-icon>
+        Cerrar sesión
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-router-outlet id="main-content"></ion-router-outlet>
