@@ -1,0 +1,36 @@
+<ion-content>
+  <div class="perfil-container">
+    <div class="perfil-card">
+    
+      <div class="perfil-avatar">
+        <img [src]="previewImage || 'https://via.placeholder.com/150'" alt="Foto de perfil" />
+      </div>
+      <div class="upload-container">
+        <ion-button (click)="fileInput.click()" expand="block" color="primary">Subir Imagen</ion-button>
+        <input type="file" #fileInput (change)="onFileSelected($event)" accept="image/*" hidden />
+      </div>
+
+    
+      <form [formGroup]="editForm" (ngSubmit)="saveChanges()" class="perfil-form">
+        
+        <ion-item>
+          <ion-label position="stacked" class="ion-label-visible">Nombre de usuario</ion-label>
+          <ion-input formControlName="username" readonly></ion-input>
+        </ion-item>
+
+        
+        <ion-item>
+          <ion-label position="stacked" class="ion-label-visible">Correo electrónico</ion-label>
+          <ion-input formControlName="email" type="email"></ion-input>
+        </ion-item>
+
+       
+        <ion-item>
+          <ion-label position="stacked" class="ion-label-visible">RUT</ion-label>
+          <ion-input formControlName="rut" type="text"></ion-input>
+        </ion-item>
+
+     
+        <div class="perfil-actions">
+          <ion-button expand="block" type="submit" color="primary">Guardar Cambios</ion-button>
+        

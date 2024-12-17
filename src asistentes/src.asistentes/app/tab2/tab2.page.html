@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Eventos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="eventosGlobales.length > 0; else noEventos">
+    <ion-list>
+      <ion-item *ngFor="let evento of eventosGlobales">
+        <ion-thumbnail slot="start">
+          <img [src]="evento.imagen" />
+        </ion-thumbnail>
+        <ion-label>
+          <h2>{{ evento.nombre }}</h2>
+          <p>{{ evento.fecha }} - {{ evento.ubicacion }}</p>
+          <p>{{ evento.descripcion }}</p>
+        </ion-label>
+        <ion-button *ngIf="!eventoAgregado" (click)="agregarEvento(evento)" color="success">
+          Agregar
+        </ion-button>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <ng-template #noEventos>
+    <ion-text>No hay eventos disponibles.</ion-text>
+  </ng-template>
+
+  <div *ngIf="eventoAgregado" class="evento-agregado">
+    <ion-text>Evento agregado exitosamente a tu perfil.</ion-text>
+  </div>
+</ion-content>
